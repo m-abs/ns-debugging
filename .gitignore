@@ -1,4 +1,7 @@
-hooks
 node_modules
 platforms
+hooks
 *.js
+*.js.map
+app/css
+*.css

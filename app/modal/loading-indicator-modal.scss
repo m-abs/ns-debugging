@@ -1,0 +1,49 @@
+.modal-box {
+  vertical-align: center;
+  horizontal-align: center;
+  background-color: transparent;
+
+  .modal-content {
+    vertical-align: center;
+    horizontal-align: center;
+    background-color: white;
+
+    .spinner-box {
+      padding: 5;
+
+      ActivityIndicator {
+        width: 40;
+        height: 40;
+      }
+    }
+
+    &.android {
+      border-radius: 8;
+
+      .spinner-box {
+        orientation: horizontal;
+        horizontal-align: center;
+        vertical-align: center;
+
+        Label {
+          vertical-align: center;
+        }
+      }
+    }
+
+    &.ios {
+      border-radius: 12;
+      .spinner-box {
+        orientation: vertical;
+      }
+    }
+
+    .btn {
+      .btn-cancel {
+        height: 20;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+}

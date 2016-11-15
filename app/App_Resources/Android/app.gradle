@@ -8,7 +8,7 @@
 android {  
   defaultConfig {  
     generatedDensities = []
-    applicationId = "org.nativescript.nsconnectivityapilevel19"  
+    applicationId = "org.nativescript.nsmodaltest"  
   }  
   aaptOptions {  
     additionalParameters "--no-version-vectors"  
