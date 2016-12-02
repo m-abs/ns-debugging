@@ -4,4 +4,3 @@ hooks
 *.js
 *.js.map
 app/css
-*.css
