@@ -1,5 +1,5 @@
-<StackLayout>
-  <ListView [items]="items | async" class="list-group" height="120">
+<GridLayout rows="*, 50">
+  <ListView [items]="items | async" class="list-group" row="0">
     <template let-item="item" let-i="index" let-odd="odd" let-even="even">
       <StackLayout [class.odd]="odd" [class.even]="even">
         <GridLayout columns="*, 20" class="list-group-item" [class.c-bg-grey]="item.currentSegment">
@@ -10,5 +10,5 @@
     </template>
   </ListView>
 
-  <Button (tap)="readAbout()" text="Read all about it" class="btn btn-outline"></Button>
-</StackLayout>
+  <Button row="1" (tap)="readAbout()" text="Read all about it" class="btn btn-outline"></Button>
+</GridLayout>
