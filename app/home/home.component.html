@@ -1,0 +1,14 @@
+<StackLayout>
+  <ListView [items]="items | async" class="list-group" height="120">
+    <template let-item="item" let-i="index" let-odd="odd" let-even="even">
+      <StackLayout [class.odd]="odd" [class.even]="even">
+        <GridLayout columns="*, 20" class="list-group-item" [class.c-bg-grey]="item.currentSegment">
+          <Label class="list-group-item-text" [text]="item.title" col="0" [colSpan]="item.currentSegment ? 1 : 2"></Label>
+          <Image *ngIf="item.currentSegment" src="res://now_playing" col="1"></Image>
+        </GridLayout>
+      </StackLayout>
+    </template>
+  </ListView>
+
+  <Button (tap)="readAbout()" text="Read all about it" class="btn btn-outline"></Button>
+</StackLayout>

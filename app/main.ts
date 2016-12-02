@@ -1,23 +1,25 @@
 // this import should be first in order to load some required settings (like globals and reflect-metadata)
 import { platformNativeScriptDynamic, NativeScriptModule } from "nativescript-angular/platform";
+import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-
-import { MODAL_COMPONENTS } from './modal/index';
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
+import { AppRoutes } from './app.routes';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ...MODAL_COMPONENTS,
+    AboutComponent,
+    HomeComponent,
   ],
   bootstrap: [
     AppComponent,
   ],
   imports: [
     NativeScriptModule,
-  ],
-  entryComponents: [
-    ...MODAL_COMPONENTS,
+    NativeScriptRouterModule,
+    NativeScriptRouterModule.forRoot(AppRoutes),
   ],
 })
 class AppComponentModule {}
