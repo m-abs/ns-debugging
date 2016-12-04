@@ -1,4 +1,4 @@
-<GridLayout rows="*, 70">
+<GridLayout rows="*, *, 70">
   <ListView [items]="items | async" class="list-group" row="0">
     <template let-item="item" let-i="index" let-odd="odd" let-even="even">
       <StackLayout [class.odd]="odd" [class.even]="even">
@@ -10,5 +10,11 @@
     </template>
   </ListView>
 
-  <Button row="1" (tap)="readAbout()" text="Read all about it" class="btn btn-outline"></Button>
+  <ListView [items]="items | async" class="list-group" row="1">
+    <template let-item="item" let-i="index" let-odd="odd" let-even="even">
+      <item-component [item]="item" [odd]="odd" [even]="odd"></item-component>
+    </template>
+  </ListView>
+
+  <Button row="2" (tap)="readAbout()" text="Read all about it" class="btn btn-outline"></Button>
 </GridLayout>

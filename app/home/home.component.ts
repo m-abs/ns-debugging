@@ -1,5 +1,5 @@
 // libs
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { RouterExtensions } from 'nativescript-angular';
 import { BehaviorSubject } from 'rxjs';
 
@@ -9,6 +9,39 @@ export interface ListViewItem {
   title: string;
   currentSegment?: boolean;
 }
+
+@Component({
+  selector: 'item-component',
+  template: `
+    <StackLayout [class.odd]="odd" [class.even]="even" (loaded)="loaded($event)" (unloaded)="unloaded($event)">
+      <GridLayout columns="20, *" class="list-group-item" [class.c-bg-grey]="item.currentSegment" (loaded)="loaded($event)" (unloaded)="unloaded($event)">
+        <Label class="list-group-item-text" [text]="item.title" col="0" [colSpan]="item.currentSegment ? 1 : 2" (loaded)="loaded($event)" (unloaded)="unloaded($event)"></Label>
+        <Image *ngIf="item.currentSegment" src="res://now_playing" col="1" (loaded)="loaded($event)" (unloaded)="unloaded($event)"></Image>
+      </GridLayout>
+    </StackLayout>
+  `
+})
+export class ItemComponent {
+  @Input() item: ListViewItem;
+  @Input() odd: boolean;
+  @Input() even: boolean;
+
+  loaded(event: any) {
+    console.log('LOADED');
+    for (const key of Object.keys(event)) {
+      console.log(`${key} = ${event[key]}`);
+    }
+    console.log('END - LOADED');
+  }
+
+  unloaded(event: any) {
+    console.log('UNLOADED');
+    for (const key of Object.keys(event)) {
+      console.log(`${key} = ${event[key]}`);
+    }
+    console.log('END - UNLOADED');
+  }
+};
 
 @Component({
   moduleId: module.id,
@@ -55,5 +88,21 @@ export class HomeComponent implements OnInit {
       }];
 
     this.items.next(items);
+  }
+
+  loaded(event: any) {
+    console.log('LOADED');
+    for (const key of Object.keys(event)) {
+      console.log(`${key} = ${event[key]}`);
+    }
+    console.log('END - LOADED');
+  }
+
+  unloaded(event: any) {
+    console.log('UNLOADED');
+    for (const key of Object.keys(event)) {
+      console.log(`${key} = ${event[key]}`);
+    }
+    console.log('END - UNLOADED');
   }
 }
