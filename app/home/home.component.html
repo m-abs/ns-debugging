@@ -1,12 +1,7 @@
 <GridLayout rows="*, 50">
-  <ListView [items]="items | async" class="list-group" row="0">
+  <ListView [items]="items | async" class="list-group" row="0" (loaded)="listViewLoaded($event)">
     <template let-item="item" let-i="index" let-odd="odd" let-even="even">
-      <StackLayout [class.odd]="odd" [class.even]="even">
-        <GridLayout columns="*, 20" class="list-group-item" [class.c-bg-grey]="item.currentSegment">
-          <Label class="list-group-item-text" [text]="item.title" col="0" [colSpan]="item.currentSegment ? 1 : 2"></Label>
-          <Image *ngIf="item.currentSegment" src="res://now_playing" col="1"></Image>
-        </GridLayout>
-      </StackLayout>
+      <sd-home-item [item]="item" [odd]="odd" [even]="even"></sd-home-item>
     </template>
   </ListView>
 

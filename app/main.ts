@@ -4,7 +4,7 @@ import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { AboutComponent } from './about/about.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent, HomeItemComponent } from './home/home.component';
 import { AppRoutes } from './app.routes';
 
 @NgModule({
@@ -12,6 +12,7 @@ import { AppRoutes } from './app.routes';
     AppComponent,
     AboutComponent,
     HomeComponent,
+    HomeItemComponent,
   ],
   bootstrap: [
     AppComponent,
