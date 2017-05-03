@@ -1,14 +1,15 @@
-// require('globals'); // necessary to bootstrap tns modules on the new thread
+import 'globals';
 
 declare function postMessage(msg: any);
 declare function close();
+declare var global: any;
 
-onmessage = function(msg) {
-  console.dump(msg);
+global.onmessage = function(msg) {
+  console.log(`message from main thread: ${JSON.stringify(msg.data)}`);
 };
 
-onerror = function(err) {
-  console.dump(err);
+global.onerror = function(err) {
+  console.log(err);
 
   return true;
 };

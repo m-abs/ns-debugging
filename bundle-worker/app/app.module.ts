@@ -31,15 +31,19 @@ export class AppModule { }
 
 let mabsworker: Worker;
 if (global.TNS_WEBPACK) {
-  const MyWorker = require('worker-loader!./worker');
+  const MyWorker = require('worker-loader!./worker.js');
   mabsworker = new MyWorker();
 } else {
   mabsworker = new Worker('./worker');
 }
 
 mabsworker.postMessage({a: 1});
-mabsworker.onmessage = function(arg) {
-  console.dump(arg);
+mabsworker.onmessage = function(msg) {
+  console.log(`message from worker thread: ${JSON.stringify(msg.data)}`);
+
+  mabsworker.postMessage({
+    a: msg.data['i'] + 1000,
+  });
 };
 
 mabsworker.onerror = function(arg) {

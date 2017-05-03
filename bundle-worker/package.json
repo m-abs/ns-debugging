@@ -47,7 +47,9 @@
     "worker-loader": "git+https://github.com/triniwiz/worker-loader.git"
   },
   "scripts": {
+    "build-worker": "tsc app/worker.ts",
     "ns-bundle": "ns-bundle",
+    "postinstall": "npm run build-worker",
     "start-android-bundle": "npm run ns-bundle --android --start-app",
     "start-ios-bundle": "npm run ns-bundle --ios --start-app",
     "build-android-bundle": "npm run ns-bundle --android --build-app",
