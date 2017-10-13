@@ -1,6 +1,8 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import 'nativescript-globalevents';
+import { Page } from 'tns-core-modules/ui/page';
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { getDefaultPage } from "nativescript-angular/platform-providers";
 import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
 
@@ -28,7 +30,11 @@ import { ItemDetailComponent } from "./item/item-detail.component";
         ItemDetailComponent
     ],
     providers: [
-        ItemService
+        ItemService,
+        {
+            provide: Page,
+            useFactory: getDefaultPage,
+        },
     ],
     schemas: [
         NO_ERRORS_SCHEMA

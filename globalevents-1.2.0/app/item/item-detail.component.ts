@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { Page } from 'tns-core-modules/ui/page';
+import { topmost } from 'tns-core-modules/ui/frame';
 
 import { Item } from "./item";
 import { ItemService } from "./item.service";
@@ -14,8 +16,13 @@ export class ItemDetailComponent implements OnInit {
 
     constructor(
         private itemService: ItemService,
-        private route: ActivatedRoute
-    ) { }
+        private route: ActivatedRoute,
+        page: Page,
+    ) {
+      console.log(page);
+      console.log(topmost().currentPage);
+      console.log(page === topmost().currentPage);
+    }
 
     ngOnInit(): void {
         const id = +this.route.snapshot.params["id"];
