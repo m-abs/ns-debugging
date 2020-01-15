@@ -1,0 +1,14 @@
+<ActionBar>
+  <Label text="Home"></Label>
+  <ActionItem (tap)="toSecondPage()" ios.position="right" text="2nd page"></ActionItem>
+</ActionBar>
+
+<GridLayout>
+  <ListView [items]="items">
+    <ng-template let-item="item">
+      <StackLayout>
+        <Label [nsRouterLink]="['../item', item.id]" [text]="item.name"></Label>
+      </StackLayout>
+    </ng-template>
+  </ListView>
+</GridLayout>
